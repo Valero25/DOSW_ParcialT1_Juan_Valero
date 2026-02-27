@@ -93,4 +93,7 @@ Se aplica parcialmente porque el diseño de la cadena permite agregar nuevos val
 
 **L — Liskov Substitution (Sustitución de Liskov)**
 Se aplica porque todos los validadores concretos extienden ValidadorCadena y pueden ser usados de forma intercambiable dentro de la cadena. El método validar() funciona correctamente con cualquier instancia de ValidadorCadena sin necesidad de conocer su tipo concreto, lo que garantiza que el comportamiento del sistema no se rompe al sustituir un validador por otro.
+## 8. 
+Se logro implementar
+
 
