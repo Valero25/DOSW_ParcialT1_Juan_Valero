@@ -3,6 +3,8 @@
 **Nombre:** Juan David Valero Abril  
 **Grupo:**  
 **Profesor:**  
+## 1. Diagrama de contexto
+<img width="1182" height="595" alt="imagen_diagrama_contexto" src="https://github.com/user-attachments/assets/4d017b31-90a1-41d9-93b5-1cbc93a03d51" />
 
 ## 2. Patrones de Diseño
 
@@ -58,7 +60,9 @@
 - Si una validación falla, el proceso se detiene inmediatamente y retorna el motivo.
 - Es posible agregar nuevas validaciones sin modificar el motor principal.
 ---
+<img width="690" height="469" alt="Diagrama_casos_de_usos" src="https://github.com/user-attachments/assets/f17f46cc-a1f3-4b74-bee0-69860efb580a" />
 
+## 5. 
 ## 6. Descomposición de Tareas 
 
 **Épica**
@@ -89,3 +93,4 @@ Se aplica parcialmente porque el diseño de la cadena permite agregar nuevos val
 
 **L — Liskov Substitution (Sustitución de Liskov)**
 Se aplica porque todos los validadores concretos extienden ValidadorCadena y pueden ser usados de forma intercambiable dentro de la cadena. El método validar() funciona correctamente con cualquier instancia de ValidadorCadena sin necesidad de conocer su tipo concreto, lo que garantiza que el comportamiento del sistema no se rompe al sustituir un validador por otro.
+
