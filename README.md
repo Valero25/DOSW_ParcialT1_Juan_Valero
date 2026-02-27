@@ -62,3 +62,23 @@
 - Es posible agregar nuevas validaciones sin modificar el motor principal.
 <img width="690" height="469" alt="Diagrama_casos_de_usos" src="https://github.com/user-attachments/assets/f73b1e5e-3976-4d63-9469-614424140430" />
 
+---
+
+## 6. Descomposición de Tareas 
+
+**Épica**
+Implementar el motor de validaciones secuenciales para solicitudes de cuenta digital, de forma que sea extensible sin modificar el flujo principal.
+
+**Historia de Usuario**
+Como sistema central, quiero ejecutar una cadena de validaciones en orden sobre cada solicitud, para garantizar que solo las solicitudes que cumplan todas las reglas sean aprobadas.
+
+**Tareas**
+
+1. Crear la clase abstracta ValidadorCadena con los métodos validar() y setSiguiente(), que sirva como base para todos los eslabones de la cadena.
+
+2. Implementar los 6 validadores concretos como clases que extienden ValidadorCadena: ValidadorDocumento, ValidadorEdad, ValidadorDuplicidad, ValidadorTelefono, ValidadorPais y ValidadorTipoCuenta.
+
+3. Implementar el método construirCadenaValidadores() en SistemaGestionSolicitudes para ensamblar y enlazar todos los validadores en el orden correcto.
+
+4. Integrar la cadena en procesarSolicitud() para que cada solicitud pase por todas las validaciones, se detenga ante el primer fallo y actualice el estado a APROBADO o RECHAZADO.
+
