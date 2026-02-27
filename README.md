@@ -1,11 +1,8 @@
 # Parcial_DOSW_T1
 
 **Nombre:** Juan David Valero Abril  
-**Grupo:**  1
-**Profesor:**  Andres Martin Cantor
-## 1 Diagrama de contexto
-<img width="1182" height="595" alt="imagen_diagrama_contexto" src="https://github.com/user-attachments/assets/196bfa1e-5c91-475e-b3c0-6b289e948718" />
-
+**Grupo:**  
+**Profesor:**  
 
 ## 2. Patrones de Diseño
 
@@ -60,8 +57,6 @@
 - Las validaciones se ejecutan en este orden: documento → edad → duplicidad → teléfono → país → tipo de cuenta.
 - Si una validación falla, el proceso se detiene inmediatamente y retorna el motivo.
 - Es posible agregar nuevas validaciones sin modificar el motor principal.
-<img width="690" height="469" alt="Diagrama_casos_de_usos" src="https://github.com/user-attachments/assets/f73b1e5e-3976-4d63-9469-614424140430" />
-
 ---
 
 ## 6. Descomposición de Tareas 
@@ -82,3 +77,15 @@ Como sistema central, quiero ejecutar una cadena de validaciones en orden sobre 
 
 4. Integrar la cadena en procesarSolicitud() para que cada solicitud pase por todas las validaciones, se detenga ante el primer fallo y actualice el estado a APROBADO o RECHAZADO.
 
+---
+
+## 7. Principios SOLID
+
+**S — Single Responsibility (Responsabilidad Única)**
+Se aplica porque cada clase tiene una única razón de cambio. La clase Solicitud solo almacena los datos del cliente, SolicitudBuilder solo se encarga de construir el objeto Solicitud, y cada validador interno (ValidadorDocumento, ValidadorEdad, etc.) solo ejecuta su propia regla de negocio. Esto hace que cada pieza del sistema sea fácil de entender y modificar sin afectar a las demás.
+
+**O — Open/Closed (Abierto/Cerrado)**
+Se aplica parcialmente porque el diseño de la cadena permite agregar nuevos validadores sin modificar el método procesarSolicitud(). Para incluir una nueva regla de validación basta con crear una nueva clase que extienda ValidadorCadena y agregarla en construirCadenaValidadores(), sin tocar la lógica principal del sistema.
+
+**L — Liskov Substitution (Sustitución de Liskov)**
+Se aplica porque todos los validadores concretos extienden ValidadorCadena y pueden ser usados de forma intercambiable dentro de la cadena. El método validar() funciona correctamente con cualquier instancia de ValidadorCadena sin necesidad de conocer su tipo concreto, lo que garantiza que el comportamiento del sistema no se rompe al sustituir un validador por otro.
