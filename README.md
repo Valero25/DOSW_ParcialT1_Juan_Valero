@@ -1,8 +1,11 @@
 # Parcial_DOSW_T1
 
 **Nombre:** Juan David Valero Abril  
-**Grupo:**  
-**Profesor:**  
+**Grupo:**  1
+**Profesor:**  Andres Martin Cantor
+## 1 Diagrama de contexto
+<img width="1182" height="595" alt="imagen_diagrama_contexto" src="https://github.com/user-attachments/assets/196bfa1e-5c91-475e-b3c0-6b289e948718" />
+
 
 ## 2. Patrones de Diseño
 
@@ -57,4 +60,5 @@
 - Las validaciones se ejecutan en este orden: documento → edad → duplicidad → teléfono → país → tipo de cuenta.
 - Si una validación falla, el proceso se detiene inmediatamente y retorna el motivo.
 - Es posible agregar nuevas validaciones sin modificar el motor principal.
+<img width="690" height="469" alt="Diagrama_casos_de_usos" src="https://github.com/user-attachments/assets/f73b1e5e-3976-4d63-9469-614424140430" />
 
