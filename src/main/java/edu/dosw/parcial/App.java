@@ -2,7 +2,7 @@ package edu.dosw.parcial;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("=== ECI SECURE REQUEST ENGINE ===");
+        System.out.println("ECI SECURE REQUEST ENGINE ");
         System.out.println("Sistema de Gestión de Solicitudes de Cuentas Bancarias\n");
 
         SistemaGestionSolicitudes sistema = new SistemaGestionSolicitudes();

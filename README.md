@@ -57,4 +57,35 @@
 - Las validaciones se ejecutan en este orden: documento → edad → duplicidad → teléfono → país → tipo de cuenta.
 - Si una validación falla, el proceso se detiene inmediatamente y retorna el motivo.
 - Es posible agregar nuevas validaciones sin modificar el motor principal.
+---
 
+## 6. Descomposición de Tareas 
+
+**Épica**
+Implementar el motor de validaciones secuenciales para solicitudes de cuenta digital, de forma que sea extensible sin modificar el flujo principal.
+
+**Historia de Usuario**
+Como sistema central, quiero ejecutar una cadena de validaciones en orden sobre cada solicitud, para garantizar que solo las solicitudes que cumplan todas las reglas sean aprobadas.
+
+**Tareas**
+
+1. Crear la clase abstracta ValidadorCadena con los métodos validar() y setSiguiente(), que sirva como base para todos los eslabones de la cadena.
+
+2. Implementar los 6 validadores concretos como clases que extienden ValidadorCadena: ValidadorDocumento, ValidadorEdad, ValidadorDuplicidad, ValidadorTelefono, ValidadorPais y ValidadorTipoCuenta.
+
+3. Implementar el método construirCadenaValidadores() en SistemaGestionSolicitudes para ensamblar y enlazar todos los validadores en el orden correcto.
+
+4. Integrar la cadena en procesarSolicitud() para que cada solicitud pase por todas las validaciones, se detenga ante el primer fallo y actualice el estado a APROBADO o RECHAZADO.
+
+---
+
+## 7. Principios SOLID
+
+**S — Single Responsibility (Responsabilidad Única)**
+Se aplica porque cada clase tiene una única razón de cambio. La clase Solicitud solo almacena los datos del cliente, SolicitudBuilder solo se encarga de construir el objeto Solicitud, y cada validador interno (ValidadorDocumento, ValidadorEdad, etc.) solo ejecuta su propia regla de negocio. Esto hace que cada pieza del sistema sea fácil de entender y modificar sin afectar a las demás.
+
+**O — Open/Closed (Abierto/Cerrado)**
+Se aplica parcialmente porque el diseño de la cadena permite agregar nuevos validadores sin modificar el método procesarSolicitud(). Para incluir una nueva regla de validación basta con crear una nueva clase que extienda ValidadorCadena y agregarla en construirCadenaValidadores(), sin tocar la lógica principal del sistema.
+
+**L — Liskov Substitution (Sustitución de Liskov)**
+Se aplica porque todos los validadores concretos extienden ValidadorCadena y pueden ser usados de forma intercambiable dentro de la cadena. El método validar() funciona correctamente con cualquier instancia de ValidadorCadena sin necesidad de conocer su tipo concreto, lo que garantiza que el comportamiento del sistema no se rompe al sustituir un validador por otro.
